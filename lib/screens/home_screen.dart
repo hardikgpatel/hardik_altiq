@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hardik_atliq/screens/feed_screen.dart';
+import 'package:hardik_atliq/screens/friends_screen.dart';
+import 'package:hardik_atliq/screens/more_screen.dart';
+import 'package:hardik_atliq/screens/notification_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/';
@@ -10,6 +13,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedTabIndex = 0;
+  List<Widget> tabs = [
+    FeedScreen(),
+    FriendsScreen(),
+    NotificationScreen(),
+    MoreScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         backgroundColor: Colors.white,
       ),
-      body: FeedScreen(),
+      body: tabs[_selectedTabIndex],
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,

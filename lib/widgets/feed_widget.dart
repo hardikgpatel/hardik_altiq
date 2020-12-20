@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hardik_atliq/models/feed_response_model.dart';
+import 'package:hardik_atliq/widgets/action_button.dart';
+import 'package:hardik_atliq/widgets/like_icons_widget.dart';
 
 class FeedWidget extends StatelessWidget {
   final FeedModel feed;
@@ -100,9 +102,6 @@ class FeedWidget extends StatelessWidget {
               _threeItemPopup(context)
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
           Container(
             padding: EdgeInsets.only(left: 40),
             margin: EdgeInsets.symmetric(
@@ -136,57 +135,7 @@ class FeedWidget extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2,
-                            ),
-                          ),
-                          child: Image.asset(
-                            'assets/icons/thumbs_up.png',
-                            height: 20,
-                            width: 20,
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2,
-                            ),
-                          ),
-                          margin: EdgeInsets.only(left: 15),
-                          child: Image.asset(
-                            'assets/icons/hart.png',
-                            height: 20,
-                            width: 20,
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2,
-                            ),
-                          ),
-                          margin: EdgeInsets.only(left: 30),
-                          child: Image.asset(
-                            'assets/icons/wow.png',
-                            height: 20,
-                            width: 20,
-                          ),
-                        ),
-                      ],
-                    ),
+                    LikeIconsWidget(icons: ['thumbs_up','hart','wow'],),
                     SizedBox(
                       width: 5,
                     ),
@@ -207,7 +156,7 @@ class FeedWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                if (feed.description != null)
+                if (feed.description != null && feed.description.isNotEmpty)
                   Column(
                     children: [
                       SizedBox(height: 10),
@@ -223,107 +172,20 @@ class FeedWidget extends StatelessWidget {
                 SizedBox(height: 10),
                 Row(
                   children: [
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      margin: EdgeInsets.only(right: 5),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey.withOpacity(0.5),
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/icons/ic_like.png',
-                            height: 15,
-                            width: 15,
-                            color: Colors.grey,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'LIKE',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
+                    ActionButton(
+                      title: 'LIKE',
+                      icon: 'ic_like',
+                      onTap: () {
+
+                      },
                     ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      margin: EdgeInsets.only(right: 5),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey.withOpacity(0.5),
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/icons/ic_message.png',
-                            height: 15,
-                            width: 15,
-                            color: Colors.grey,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'COMMENT',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
+                    ActionButton(
+                      title: 'COMMENT',
+                      icon: 'ic_message',
                     ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      margin: EdgeInsets.only(right: 5),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey.withOpacity(0.5),
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/icons/ic_share.png',
-                            height: 15,
-                            width: 15,
-                            color: Colors.grey,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'SHARE',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
+                    ActionButton(
+                      title: 'SHARE',
+                      icon: 'ic_share',
                     )
                   ],
                 )

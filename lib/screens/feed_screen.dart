@@ -78,12 +78,7 @@ class _FeedScreenState extends State<FeedScreen> {
                                   height: 60,
                                   width: 60,
                                   decoration: BoxDecoration(
-                                    color: Colors.black,
                                     shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      width: 2,
-                                    ),
                                     image: DecorationImage(
                                       image: AssetImage(
                                         'assets/images/hardik.jpg',

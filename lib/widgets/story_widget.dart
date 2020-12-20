@@ -12,15 +12,16 @@ class StoryWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: 5,
+          margin: EdgeInsets.only(
+            left: 5,
           ),
+          padding: EdgeInsets.all(2),
           height: 60,
           width: 60,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.blue,
               width: 2,
             ),
           ),
