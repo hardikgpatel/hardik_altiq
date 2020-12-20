@@ -1,4 +1,4 @@
-name: hardik_altiq
+name: hardik_atliq
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -17,6 +17,9 @@ dependencies:
   http: ^0.12.2
   dio: ^3.0.10
   floor: ^0.17.0
+  provider: ^4.3.2+2
+  shimmer: ^1.1.2
+  cached_network_image: ^2.4.1
 
   cupertino_icons: ^1.0.0
 
@@ -31,3 +34,4 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/images/
