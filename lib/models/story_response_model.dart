@@ -28,13 +28,15 @@ class StoryModel {
   String name;
   String profile;
   int userId;
+  bool isSeen;
 
-  StoryModel({this.name, this.profile, this.userId});
+  StoryModel({this.name, this.profile, this.userId, this.isSeen});
 
   StoryModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     profile = json['profile'];
     userId = json['user_id'];
+    isSeen = json.containsKey('is_seen') ? true : false;
   }
 
   Map<String, dynamic> toJson() {
@@ -43,6 +45,10 @@ class StoryModel {
     data['profile'] = this.profile;
     data['user_id'] = this.userId;
     return data;
+  }
+
+  updateSeen() {
+    isSeen = true;
   }
 
 }

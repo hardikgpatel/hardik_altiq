@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hardik_atliq/models/feed_response_model.dart';
+import 'package:hardik_atliq/provider/feed_provider.dart';
 import 'package:hardik_atliq/widgets/action_button.dart';
 import 'package:hardik_atliq/widgets/like_icons_widget.dart';
+import 'package:provider/provider.dart';
 
 class FeedWidget extends StatelessWidget {
   final FeedModel feed;
@@ -171,17 +173,23 @@ class FeedWidget extends StatelessWidget {
                   ),
                 SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ActionButton(
-                      title: 'LIKE',
+                      title: feed.hasLiked ? 'LIKED' : 'LIKE',
                       icon: 'ic_like',
+                      color: feed.hasLiked ? Colors.blue : Colors.grey,
                       onTap: () {
-
+                        Provider.of<FeedProvider>(context, listen: false).updateLike(feed);
                       },
                     ),
                     ActionButton(
-                      title: 'COMMENT',
+                      title: feed.hasCommented ? 'COMMENTED' : 'COMMENT',
+                      color: feed.hasCommented ? Colors.blue : Colors.grey,
                       icon: 'ic_message',
+                      onTap: () {
+                        Provider.of<FeedProvider>(context, listen: false).updateComment(feed);
+                      },
                     ),
                     ActionButton(
                       title: 'SHARE',

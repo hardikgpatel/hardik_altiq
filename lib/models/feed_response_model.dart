@@ -30,7 +30,7 @@ class FeedModel {
   String time;
   int likes;
   int comments;
-  int hasLiked;
+  bool hasLiked;
   String username;
   String description;
   bool hasCommented;
@@ -52,9 +52,10 @@ class FeedModel {
     time = json['time'];
     likes = json['likes'];
     comments = json['comments'];
-    hasLiked = json['hasLiked'];
+    hasLiked = json.containsKey('hasLiked') ? json['hasLiked'] == 1 : false;
     username = json['username'];
-    hasCommented = json['hasCommented'];
+    hasCommented =
+        json.containsKey('hasCommented') ? json['hasCommented'] == 1 : false;
     description = json['description'] ?? '';
   }
 
@@ -69,5 +70,13 @@ class FeedModel {
     data['username'] = this.username;
     data['hasCommented'] = this.hasCommented;
     return data;
+  }
+
+  updateLike() {
+    hasLiked = !hasLiked;
+  }
+
+  updateComment() {
+    hasCommented = !hasCommented;
   }
 }

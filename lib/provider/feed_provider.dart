@@ -21,7 +21,7 @@ class FeedProvider with ChangeNotifier {
 
   List<StoryModel> get stories => _storyModel;
 
-  List<FeedModel> _feedModel =[];
+  List<FeedModel> _feedModel = [];
 
   List<FeedModel> get feeds => _feedModel;
 
@@ -32,8 +32,9 @@ class FeedProvider with ChangeNotifier {
 
   getStories() async {
     final response = await _httpService.get(path: 'ccbb47f5899bbc9ed1f5');
-    StoryResponseModel responseModel = StoryResponseModel.fromJson(jsonDecode(response.toString()));
-    if(responseModel.success){
+    StoryResponseModel responseModel =
+        StoryResponseModel.fromJson(jsonDecode(response.toString()));
+    if (responseModel.success) {
       _storyModel.clear();
       _storyModel.addAll(responseModel.stories);
     } else {
@@ -43,10 +44,11 @@ class FeedProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  getFeeds() async{
+  getFeeds() async {
     final resp = await _httpService.get(path: '902b05130ff4a34c74cd');
-    FeedResponseModel responseModel = FeedResponseModel.fromJson(jsonDecode(resp.toString()));
-    if(responseModel.success) {
+    FeedResponseModel responseModel =
+        FeedResponseModel.fromJson(jsonDecode(resp.toString()));
+    if (responseModel.success) {
       _feedModel.clear();
       _feedModel.addAll(responseModel.feeds);
     } else {
@@ -54,6 +56,21 @@ class FeedProvider with ChangeNotifier {
     }
 
     _isLoadingFeed = false;
+    notifyListeners();
+  }
+
+  updateLike(FeedModel feed) {
+    feed.updateLike();
+    notifyListeners();
+  }
+
+  updateComment(FeedModel feed) {
+    feed.updateComment();
+    notifyListeners();
+  }
+
+  updateStorySeen(StoryModel story) {
+    story.updateSeen();
     notifyListeners();
   }
 }

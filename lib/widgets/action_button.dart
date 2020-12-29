@@ -4,8 +4,9 @@ class ActionButton extends StatelessWidget {
   final String icon;
   final String title;
   final Function onTap;
+  final Color color;
 
-  const ActionButton({Key key, this.icon, this.title, this.onTap})
+  const ActionButton({Key key, this.icon, this.title, this.onTap, this.color = Colors.grey})
       : super(key: key);
 
   @override
@@ -17,7 +18,7 @@ class ActionButton extends StatelessWidget {
         margin: EdgeInsets.only(right: 5),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.grey.withOpacity(0.5),
+            color: color.withOpacity(0.5),
             width: 1,
           ),
           borderRadius: BorderRadius.circular(30),
@@ -30,16 +31,16 @@ class ActionButton extends StatelessWidget {
               'assets/icons/$icon.png',
               height: 15,
               width: 15,
-              color: Colors.grey,
+              color: color,
             ),
             SizedBox(
-              width: 10,
+              width: 5,
             ),
             Text(
               title,
               style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
+                fontSize: 11,
+                color: color,
               ),
             ),
           ],
