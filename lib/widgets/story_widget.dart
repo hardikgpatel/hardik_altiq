@@ -15,7 +15,8 @@ class StoryWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Provider.of<FeedProvider>(context, listen: false).updateStorySeen(story);
+            Provider.of<FeedProvider>(context, listen: false)
+                .updateStorySeen(story);
           },
           child: Container(
             margin: EdgeInsets.only(
@@ -35,7 +36,11 @@ class StoryWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(50),
               child: CachedNetworkImage(
                 imageUrl: story.profile,
-                placeholder: (context, url) => Center(child: CircularProgressIndicator(strokeWidth: 2,)),
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                  ),
+                ),
                 errorWidget: (context, url, error) => Icon(Icons.error),
                 fit: BoxFit.cover,
               ),

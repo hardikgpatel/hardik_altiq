@@ -45,10 +45,15 @@ class _FeedScreenState extends State<FeedScreen> {
                 SizedBox(
                   width: 5,
                 ),
-                Text(
-                  'Play All',
-                  style: TextStyle(
-                    color: Colors.grey,
+                GestureDetector(
+                  onTap: () {
+                    Provider.of<FeedProvider>(context, listen: false).updateAllStories();
+                  },
+                  child: Text(
+                    'Play All',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ],
@@ -184,7 +189,9 @@ class _FeedScreenState extends State<FeedScreen> {
                     )
                   : ListView.builder(
                       itemCount: provider.feeds.length,
-                      itemBuilder: (context, index) => FeedWidget(feed: provider.feeds[index],),
+                      itemBuilder: (context, index) => FeedWidget(
+                        feed: provider.feeds[index],
+                      ),
                     ),
             ),
           )

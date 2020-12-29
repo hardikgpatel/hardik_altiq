@@ -73,4 +73,11 @@ class FeedProvider with ChangeNotifier {
     story.updateSeen();
     notifyListeners();
   }
+
+  updateAllStories() {
+    _storyModel.forEach((story) {
+      story.updateSeen();
+    });
+    notifyListeners();
+  }
 }
